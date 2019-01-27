@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Find the Train you need!</title>
+    
+</head>
+
+<!--body-->
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    
+<!--jumbotron-->
+    <div class="jumbotron jumbotron-fluid p-3 mb-2 bg-dark text-white">
+        <div class="container">
+            <h1 class="display-4 text-center">Find the Train you need!</h1>
+        </div>
+    </div>
+<!--table-->
+<div class="container">
+        <div class="row">
+          <div class="col">
+    <table class="table table-dark">
+            <thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Current train schedule</th>
+              <tr>
+                <th scope="col">Train name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency (min)</th>
+                <th scope="col">Next arrival</th>
+                <th scope="col">Minutes away</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td id="display-train"></td>
+                <td id=""> </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <form id="form">
+                <p class="font-weight-bold">Add a train</p>
+                <table class="table table-dark">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Train Name</label>
+                  <input type="text" class="form-control" id="trainName" >
+                </div>
+
+                <div class="form-group">
+                        <label for="exampleFormControlInput2">Destination</label>
+                        <input type="text" class="form-control" id="destination" >
+                      </div>
+
+                      <div class="form-group">
+                            <label for="exampleFormControlInput3">First train time (hh:mm - military time) </label>
+                            <input type="text" class="form-control" id="trainTime" >
+                          </div>
+
+                          <div class="form-group">
+                                <label for="exampleFormControlInput4">Frequency (min)</label>
+                                <input type="text" class="form-control" id="frequency">
+                              </div>
+                              <button type="submit" class="btn btn-secondary" id="submitTrain">Submit</button>
+              </form> 
+   
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+    </div>
+
+</body>
+</html>
