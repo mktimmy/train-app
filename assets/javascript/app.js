@@ -1,26 +1,37 @@
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDw3xa3CvhOd1zuFcSDv7KXOcrFe6Br_Mo",
-    authDomain: "train-project-246c1.firebaseapp.com",
-    databaseURL: "https://train-project-246c1.firebaseio.com",
-    projectId: "train-project-246c1",
-    storageBucket: "train-project-246c1.appspot.com",
-    messagingSenderId: "399168380124"
-  };
  
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyC0xeUPtloy1-XiCXujIsYEWfIQfScqiJ4",
+     authDomain: "train-project-2.firebaseapp.com",
+     databaseURL: "https://train-project-2.firebaseio.com",
+     projectId: "train-project-2",
+     storageBucket: "train-project-2.appspot.com",
+     messagingSenderId: "572121820070"
+   };
+  
   firebase.initializeApp(config);
 
  // Get a reference to the database service
  var database = firebase.database();
+
+  // On Click of Button
+  $("#submitTrain").on("click", function(event) {
+    event.preventDefault();
 
  var trainName = "";
  var destination = "";
  var time = 0;
  var frequency = "";
 
- // On Click of Button
- $("submitTrain").on("click", function(event) {
-    event.preventDefault();
+  //object to store user info
+  var newTrain = {
+    name: trainName,
+    destination: destination,
+    time: time,
+    frequency: frequency
+};
+
+
 
     // Code in the logic for storing and retrieving the most recent user.
       // Don't forget to provide initial data to your Firebase database.
@@ -28,7 +39,6 @@
       destination = $("#destination").val().trim();
       time = $("#trainTime").val().trim();
       frequency = $("#frequency").val().trim();
-      console.log (trainName);
 
       database.ref().set({
         trainName: trainName,
