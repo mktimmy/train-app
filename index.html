@@ -15,6 +15,10 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+
+  <!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
  
     <title>Find the Train you need!</title>
     
@@ -33,11 +37,9 @@
 <div class="container">
         <div class="row">
           <div class="col">
+              <h1>Current train schedule</h1>
     <table class="table table-dark">
             <thead>
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Current train schedule</th>
               <tr>
                 <th scope="col">Train name</th>
                 <th scope="col">Destination</th>
@@ -46,28 +48,8 @@
                 <th scope="col">Minutes away</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td id="display-train"></td>
-                <td id=""> </td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+            <tbody id="trainDisplay">
+            
             </tbody>
           </table>
 
@@ -75,22 +57,22 @@
                 <p class="font-weight-bold">Add a train</p>
                 <table class="table table-dark">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Train Name</label>
+                  <label for="trainName">Train Name</label>
                   <input type="text" class="form-control" id="trainName" >
                 </div>
 
                 <div class="form-group">
-                        <label for="exampleFormControlInput2">Destination</label>
+                        <label for="destination">Destination</label>
                         <input type="text" class="form-control" id="destination" >
                       </div>
 
                       <div class="form-group">
-                            <label for="exampleFormControlInput3">First train time (hh:mm - military time) </label>
+                            <label for="trainTime">First train time (hh:mm - military time) </label>
                             <input type="text" class="form-control" id="trainTime" >
                           </div>
 
                           <div class="form-group">
-                                <label for="exampleFormControlInput4">Frequency (min)</label>
+                                <label for="frequency">Frequency (min)</label>
                                 <input type="text" class="form-control" id="frequency">
                               </div>
                               <button type="submit" class="btn btn-secondary" id="submitTrain">Submit</button>

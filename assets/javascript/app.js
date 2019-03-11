@@ -14,53 +14,63 @@
  // Get a reference to the database service
  var database = firebase.database();
 
-  // On Click of Button
-  $("#submitTrain").on("click", function(event) {
-    event.preventDefault();
+  //Click function for submit button
+$("#submitTrain").on("click",function(){
+  event.preventDefault();
+  
+  //To do: validate user input before creating object
+  //eg, name and destination is a string, time in correct format, freq is number
 
- var trainName = "";
- var destination = "";
- var time = 0;
- var frequency = "";
-
-  //object to store user info
+  //gather the inputs
   var newTrain = {
-    name: trainName,
-    destination: destination,
-    time: time,
-    frequency: frequency
-};
+    Name : $("#trainName").val().trim(),
+    Destination : $("#destination").val().trim(),
+    Time : $("#trainTime").val().trim(),
+    Frequency : $("#frequency").val().trim()
+  }
+  
+  //push new train to firebase
+  database.ref().push(newTrain);
+  
+  //if you wanted to change : db.ref("-L_3jqI9Nd4dX7BThRkZ/Destination").set("newValue")
+
+  //clearing the inputs
+  $("#trainName").val("");
+  $("#destination").val("");
+  $("#trainTime").val("");
+  $("#frequency").val("");
+
+})
 
 
+  //listener for FireBase
 
-    // Code in the logic for storing and retrieving the most recent user.
-      // Don't forget to provide initial data to your Firebase database.
-      trainName = $("#trainName").val().trim();
-      destination = $("#destination").val().trim();
-      time = $("#trainTime").val().trim();
-      frequency = $("#frequency").val().trim();
+   //on child added (when page loads, will run for every item in db; run again when anything is added / on value woulndt apply because its for one specific entry (reference, firebase))
 
-      database.ref().set({
-        trainName: trainName,
-        destination: destination,
-        time: time,
-        frequency: frequency
-      });
-});
-database.ref().on("value", function(snapshot) {
+    //retrieve the data from db
+  database.ref().on("child_added", function(snapshot){
+  var name = snapshot.val().Name;
+  var destination = snapshot.val().Destination;
+  var time = snapshot.val().Time;
+  var frequency = snapshot.val().Frequency;
 
-    // Log everything that's coming out of snapshot
-    console.log(snapshot.val());
-    console.log(snapshot.val().trainName);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().time);
-    console.log(snapshot.val().frequency);
+  console.log(name, destination, time, frequency);
 
-    // Change the HTML to reflect
-    $("#display-train").text(snapshot.val().trainName);
-    $("#email-display").text(snapshot.val().email);
-    $("#age-display").text(snapshot.val().age);
-    $("#comment-display").text(snapshot.val().comment);
+//***do logic to determine when next train is, how far away it is***
+  //calculate difference between now and first train time (in min)
+//get remainder of dividing difference by freq
+//this will give us minutes to next train
+//we need to add that number of min to current time
+//that will give time of next train
+  
+})
 
-    // Handle the errors
-  });
+//update the DOM
+$("#trainDisplay").append(
+  $("<tr>").append(
+    $("<td>").text(name),
+    $("<td>").text(destination),
+    $("<td>").text(time),
+    $("<td>").text(frequency),
+  )
+)
