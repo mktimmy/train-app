@@ -58,19 +58,31 @@ $("#submitTrain").on("click",function(){
 
 //***do logic to determine when next train is, how far away it is***
   //calculate difference between now and first train time (in min)
+
+  var convertedTime = moment(time,"HH:mm").subtract(1,"years")
+  var difference = moment().diff(moment(convertedTime),"minutes")
+
+
+
 //get remainder of dividing difference by freq
+
+  var nextTrainMinutes = difference % frequency 
+  var nextTrainTime = moment().add(nextTrainMinutes,"minutes")
+
 //this will give us minutes to next train
 //we need to add that number of min to current time
 //that will give time of next train
   
-})
-
 //update the DOM
 $("#trainDisplay").append(
   $("<tr>").append(
     $("<td>").text(name),
     $("<td>").text(destination),
     $("<td>").text(time),
-    $("<td>").text(frequency),
+    $("<td>").text(nextTrainTime.format("HH:mm")),
+    $("<td>").text(nextTrainMinutes),
   )
 )
+
+})
+
